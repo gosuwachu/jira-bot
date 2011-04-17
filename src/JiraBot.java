@@ -52,7 +52,7 @@ public class JiraBot extends PircBot {
 						} else if(tokens[0].equals("!reporter")) {
 							sendMessage(channel, issue.getReporter().getDisplayName());
 						} else if(tokens[0].equals("!issue")) {
-							String reply = MESSAGE_SEPARATOR;
+							String reply = MESSAGE_SEPARATOR + "\n";
 							reply += format(Colors.BOLD, "Summary: ") + issue.getSummary() + "\n";
 							reply += format(Colors.BOLD, "Status: ") + issue.getStatus().getName() + "\n";
 							reply += format(Colors.BOLD, "Reporter: ") + issue.getReporter().getDisplayName() 
@@ -73,7 +73,7 @@ public class JiraBot extends PircBot {
 								reply += format(Colors.BOLD, "Last comment: ") + "(" + lastComment.getAuthor().getDisplayName() + ")" 
 									+ lastComment.getBody() + "\n";
 							} else {
-								reply += "Last comment: no comments yet\n";
+								reply += format(Colors.BOLD, "Last comment: ") + "no comments yet\n";
 							}
 							
 							reply += MESSAGE_SEPARATOR;
@@ -113,6 +113,8 @@ public class JiraBot extends PircBot {
 				sendMessage(channel, reply);
 			} else if(tokens[0].equals("!help")) {
 				sendMessage(channel, "Commands: !about, !help, !desc, !summary, !issue, !reporter, !assignee, !status, !url, !field");
+			} else if(tokens[0].equals("!exit")) {
+				disconnect();
 			}
 		}
 	}
