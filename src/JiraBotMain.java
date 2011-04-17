@@ -2,14 +2,13 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.net.SocketFactory;
 import javax.net.ssl.SSLException;
 
-import org.jibble.pircbot.*;
+import org.jibble.pircbot.IrcException;
+import org.jibble.pircbot.NickAlreadyInUseException;
+import org.jibble.pircbot.TrustingSSLSocketFactory;
 
 import com.atlassian.jira.rest.client.JiraRestClient;
-import com.atlassian.jira.rest.client.NullProgressMonitor;
-import com.atlassian.jira.rest.client.domain.Issue;
 import com.atlassian.jira.rest.client.internal.jersey.JerseyJiraRestClientFactory;
 
 public class JiraBotMain {
